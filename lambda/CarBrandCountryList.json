@@ -1,0 +1,634 @@
+[
+    {
+        "id": 1,
+        "brand": "Audi",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 2,
+        "brand": "BMW",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 3,
+        "brand": "Maybach",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 4,
+        "brand": "Mercedes-Benz Volkswagen",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 5,
+        "brand": "Smart",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 6,
+        "brand": "Porsche",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 7,
+        "brand": "Opel",
+        "country_of_ori": [
+            "germany",
+            "german"
+        ]
+    },
+    {
+        "id": 8,
+        "brand": "Cadillac",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 9,
+        "brand": "Chevrolet",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 10,
+        "brand": "Chrysler",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 11,
+        "brand": "Dodge",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 12,
+        "brand": "Ford GM",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 13,
+        "brand": "GMC",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 14,
+        "brand": "Jeep",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 15,
+        "brand": "Tesla",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 16,
+        "brand": "Lincoln",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 17,
+        "brand": "Plymouth",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 18,
+        "brand": "Ram",
+        "country_of_ori": [
+            "united states",
+            "us",
+            "america",
+            "american"
+        ]
+    },
+    {
+        "id": 19,
+        "brand": "Aston-Martin",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 20,
+        "brand": "Bentley",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 21,
+        "brand": "Jaguar",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 22,
+        "brand": "Land-Rover",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 23,
+        "brand": "Leyland",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 24,
+        "brand": "Rolls-Royce",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 25,
+        "brand": "Vauxhall McLaren",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 26,
+        "brand": "MINI",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 27,
+        "brand": "Morgan",
+        "country_of_ori": [
+            "united kingdom",
+            "uk",
+            "britain",
+            "british"
+        ]
+    },
+    {
+        "id": 28,
+        "brand": "Abarth",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 29,
+        "brand": "Alfa Romeo",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 30,
+        "brand": "Ferrari",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 31,
+        "brand": "Fiat",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 32,
+        "brand": "Iveco",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 33,
+        "brand": "Lamborghini",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 34,
+        "brand": "Lancia",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 35,
+        "brand": "Pagani",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 36,
+        "brand": "Maserati",
+        "country_of_ori": [
+            "italy",
+            "italian"
+        ]
+    },
+    {
+        "id": 37,
+        "brand": "Acura",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 38,
+        "brand": "Daihatsu",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 39,
+        "brand": "Honda",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 40,
+        "brand": "Infinity",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 41,
+        "brand": "Isuzu",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 42,
+        "brand": "Lexus",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 43,
+        "brand": "Mazda",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 44,
+        "brand": "Toyota",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 45,
+        "brand": "Subaru",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 46,
+        "brand": "Suzuki",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 47,
+        "brand": "Nissan",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 48,
+        "brand": "Mitsubishi",
+        "country_of_ori": [
+            "japan",
+            "japanese"
+        ]
+    },
+    {
+        "id": 49,
+        "brand": "Bugatti",
+        "country_of_ori": [
+            "france",
+            "french"
+        ]
+    },
+    {
+        "id": 50,
+        "brand": "Citroen",
+        "country_of_ori": [
+            "france",
+            "french"
+        ]
+    },
+    {
+        "id": 51,
+        "brand": "Peugeot",
+        "country_of_ori": [
+            "france",
+            "french"
+        ]
+    },
+    {
+        "id": 52,
+        "brand": "Renault",
+        "country_of_ori": [
+            "france",
+            "french"
+        ]
+    },
+    {
+        "id": 53,
+        "brand": "GAC(Guangzhou Automobile Group)",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 54,
+        "brand": "BAIC",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 55,
+        "brand": "Chana",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 56,
+        "brand": "Changfeng",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 57,
+        "brand": "Chery",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 58,
+        "brand": "Dongfeng",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 59,
+        "brand": "GreatWall",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 60,
+        "brand": "Hafei",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 61,
+        "brand": "Haima",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 62,
+        "brand": "Hongqi",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 63,
+        "brand": "NIO",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 64,
+        "brand": "Xpeng",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 65,
+        "brand": "Wuling",
+        "country_of_ori": [
+            "china",
+            "chinese"
+        ]
+    },
+    {
+        "id": 66,
+        "brand": "Daewoo(General Motors Korea)",
+        "country_of_ori": [
+            "south korea",
+            "korea"
+        ]
+    },
+    {
+        "id": 67,
+        "brand": "Hyundai",
+        "country_of_ori": [
+            "south korea",
+            "korea"
+        ]
+    },
+    {
+        "id": 68,
+        "brand": "Kia",
+        "country_of_ori": [
+            "south korea",
+            "korea"
+        ]
+    },
+    {
+        "id": 69,
+        "brand": "Genesis",
+        "country_of_ori": [
+            "south korea",
+            "korea"
+        ]
+    },
+    {
+        "id": 70,
+        "brand": "SsangYong",
+        "country_of_ori": [
+            "south korea",
+            "korea"
+        ]
+    },
+    {
+        "id": 71,
+        "brand": "Saab",
+        "country_of_ori": [
+            "sweden",
+            "Swedish"
+        ]
+    },
+    {
+        "id": 72,
+        "brand": "Volvo",
+        "country_of_ori": [
+            "sweden",
+            "Swedish"
+        ]
+    },
+    {
+        "id": 73,
+        "brand": "Tata",
+        "country_of_ori": [
+            "india",
+            "indian"
+        ]
+    },
+    {
+        "id": 74,
+        "brand": "Mahindra",
+        "country_of_ori": [
+            "india",
+            "indian"
+        ]
+    }
+]

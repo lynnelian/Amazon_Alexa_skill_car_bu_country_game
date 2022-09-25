@@ -222,7 +222,7 @@ const SkipTheQuestionIntentHandler = {
             sessionAttributes.currentCar = car;
             //save the session attributes and ask the question
             handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
-            speakOutput = `Let\'s move to the next one. Where is ${car.brand} from?`;
+            speakOutput = `Let's move to the next one. Where is ${car.brand} from?`;
         }
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -259,8 +259,8 @@ const CancelAndStopIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         const score = sessionAttributes.score;
 
-        var speakOutput = '',
-        if(score>1){
+        var speakOutput = '';
+        if(score > 1){
             speakOutput = `Your scored ${score} this time. Good try!See you next time!`;
         } else {
             speakOutput = `Goodbye and have a nice day!`;

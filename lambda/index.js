@@ -1,16 +1,78 @@
 /* *
- * This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK (v2).
- * Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
- * session persistence, api calls, and more.
- * */
+ *car by country game js 1.0 
+ *whats new:
+ *1 no "yes" reponse before entering next question DONE
+ *2 support repeat (repeat question) DONE
+ *3 support three times guessing DONE
+**/
 const Alexa = require('ask-sdk-core');
+const AWS = require('aws-sdk');
+const ddbAdapter = require('ask-sdk-dynamodb-persistence-adapter');
+
+// are you tracking past celebrities between sessions
+const celeb_tracking = false;
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+    async handle(handlerInput) {
+        //set up our Settings api foundations
+        const serviceClientFactory = handlerInput.serviceClientFactory;
+        const deviceId = handlerInput.requestEnvelope.context.System.device.deviceId;
+
+        // initialize some variables
+        var userTimeZone, greeting;
+
+        // wrap the API call in a try/catch block in case the call fails for
+        // whatever reason.
+        try {
+            const upsServiceClient = serviceClientFactory.getUpsServiceClient();
+            userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);
+        } catch (error) {
+            userTimeZone = "error";
+            console.log('error', error.message);
+        }
+
+        // calculate our greeting
+        if(userTimeZone === "error"){
+            greeting = "Hello.";
+        } else {
+            // get the hour of the day or night in your customer's time zone
+            const cfunctions = await require('./carBrandGame.js');
+            var hour = cfunctions.getHour(userTimeZone);
+            if(0<=hour&&hour<=4){
+                greeting = "Hi night-owl!"
+            } else if (5<=hour&&hour<=11) {
+                greeting = "Good morning!"
+            } else if (12<=hour&&hour<=17) {
+                greeting = "Good afternoon!"
+            } else if (17<=hour&&hour<=23) {
+                greeting = "Good evening!"
+            } else {
+                greeting = "Howdy partner!"   
+            }
+        }
+
+        var speakOutput = "";
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        if(sessionAttributes.visits === 0){
+            speakOutput = `${greeting} Welcome to Car by Country Quiz. I'll tell you a car brand and
+                you try to guess the country of origin of the brand. See how many you can get!
+                Would you like to play?`;
+        } else {
+            speakOutput = `${greeting} Excited to see you again! Welcome back to Car by Country! Ready to guess some more car brands
+                birthdays?`
+        }
+
+
+        // increment the number of visits and save the session attributes so the
+        // ResponseInterceptor will save it persistently.
+        sessionAttributes.visits += 1;
+        // MAke sure the number of guess in each question start with 0.
+        sessionAttributes.num_of_guess = 0;
+        handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

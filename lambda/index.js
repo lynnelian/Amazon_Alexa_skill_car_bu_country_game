@@ -5,8 +5,8 @@ const Alexa = require('ask-sdk-core');
 const AWS = require('aws-sdk');
 const ddbAdapter = require('ask-sdk-dynamodb-persistence-adapter');
 
-// are you tracking past celebrities between sessions
-const celeb_tracking = false;
+// are you tracking past questions between sessions
+const questionTracking = false;
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -66,7 +66,7 @@ const LaunchRequestHandler = {
         // ResponseInterceptor will save it persistently.
         sessionAttributes.visits += 1;
         // MAke sure the number of guess in each question start with 0.
-        sessionAttributes.num_of_guess = 0;
+        sessionAttributes.numOfGuess = 0;
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
         return handlerInput.responseBuilder
@@ -79,11 +79,9 @@ const LaunchRequestHandler = {
 
 const PlayGameHandler = {
     canHandle(handlerInput) {
-        return (
-            Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-            (Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent'
-                || Alexa.getIntentName(handlerInput.requestEnvelope) === 'RepeatQuestionIntent')
-        );
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && (Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent'
+                || Alexa.getIntentName(handlerInput.requestEnvelope) === 'RepeatQuestionIntent');
     },
     handle(handlerInput) {
         // get the current session attributes
@@ -152,7 +150,7 @@ const GetCountryNameIntentHandler = {
         const cfunctions = require('./carBrandGame.js');
         const winner = cfunctions.checkAnswer(sessionAttributes.currentCar,userReponse);
 
-        sessionAttributes.num_of_guess += 1;
+        sessionAttributes.numOfGuess += 1;
         // store the value for the speakOut
         const cbrand = sessionAttributes.currentCar.brand;
 
@@ -176,8 +174,8 @@ const GetCountryNameIntentHandler = {
             sessionAttributes.pastCars.push(sessionAttributes.currentCar);
             //set the new "currentCar" attribute
             sessionAttributes.currentCar = car;
-            sessionAttributes.num_of_guess = 0;
-        } else if(sessionAttributes.num_of_guess < 3){
+            sessionAttributes.numOfGuess = 0;
+        } else if(sessionAttributes.numOfGuess < 3){
             speakOutput = `Sorry. You didn't get the right country of origin for
             ${cbrand}. Have another try.`;
         } else {
@@ -187,7 +185,7 @@ const GetCountryNameIntentHandler = {
             sessionAttributes.pastCars.push(sessionAttributes.currentCar);
             //set the new "currentCar" attribute
             sessionAttributes.currentCar = car;
-            sessionAttributes.num_of_guess = 0;
+            sessionAttributes.numOfGuess = 0;
         }
 
         //store all the updated session data
@@ -317,11 +315,11 @@ const LoadDataInterceptor = {
         if(!sessionAttributes.hasOwnProperty('score')) sessionAttributes.score = 0;
         if(!persistent.hasOwnProperty('pastCars')) persistent.pastCars = [];  
         if(!sessionAttributes.hasOwnProperty('pastCars')) sessionAttributes.pastCars = []; 
-        if(!sessionAttributes.hasOwnProperty('num_of_guess')) sessionAttributes.num_of_guess = 0; 
+        if(!sessionAttributes.hasOwnProperty('numOfGuess')) sessionAttributes.numOfGuess = 0; 
 
         // if you're tracking pastCars between sessions, use the persistent value
         // set the visits value (either 0 for new, or the persistent value)
-        sessionAttributes.pastCars = (celeb_tracking) ? persistent.pastCars : sessionAttributes.pastCars;
+        sessionAttributes.pastCars = (questionTracking) ? persistent.pastCars : sessionAttributes.pastCars;
         sessionAttributes.visits = (persistent.hasOwnProperty('visits')) ? persistent.visits : 0;
 
         //set the session attributes so they're available to your handlers
@@ -343,7 +341,7 @@ const SaveDataInterceptor = {
         const persistent = {};
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         // save (or not) the pastCars & visits
-        persistent.pastCars = (celeb_tracking) ? sessionAttributes.pastCars : [];
+        persistent.pastCars = (questionTracking) ? sessionAttributes.pastCars : [];
         persistent.visits = sessionAttributes.visits;
         // set and then save the persistent attributes
         handlerInput.attributesManager.setPersistentAttributes(persistent);

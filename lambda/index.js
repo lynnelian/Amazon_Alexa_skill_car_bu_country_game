@@ -8,34 +8,18 @@ const ddbAdapter = require('ask-sdk-dynamodb-persistence-adapter');
 
 
 const LaunchRequestHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
-    },
-     handle(handlerInput) {
-        var speakOutput = '';
-        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+  canHandle(handlerInput) {
+    return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
+  },
+  handle(handlerInput) {
+    const speechText = 'Welcome to your SDK weather skill. Ask me the weather!';
 
-        if(sessionAttributes.visits === 0){
-            speakOutput = `Welcome to Car by Country Quiz. I'll tell you a car brand and
-                you try to guess the country of origin of the brand. See how many you can get!
-                Would you like to play?`;
-        } else {
-            speakOutput = `Excited to see you again! Welcome back to Car by Country! 
-            Ready to guess some more car brands?`
-        }
-
-        // increment the number of visits and save the session attributes so the
-        // ResponseInterceptor will save it persistently.
-        sessionAttributes.visits += 1;
-        // MAke sure the number of guess in each question start with 0.
-        sessionAttributes.num_of_guess = 0;
-        handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(speakOutput)
-            .getResponse();
-    }
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Welcome to your SDK weather skill. Ask me the weather!', speechText)
+      .getResponse();
+  }
 };
 
 const HelloWorldIntentHandler = {

@@ -81,7 +81,8 @@ const PlayGameHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && (Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent'
-                || Alexa.getIntentName(handlerInput.requestEnvelope) === 'RepeatQuestionIntent');
+                || Alexa.getIntentName(handlerInput.requestEnvelope) === 'RepeatQuestionIntent'
+                || Alexa.getIntentName(handlerInput.requestEnvelope) === 'ContinueToPlayIntent');
     },
     handle(handlerInput) {
         // get the current session attributes
@@ -198,13 +199,47 @@ const GetCountryNameIntentHandler = {
     }
 };
 
+const SkipTheQuestionIntentHandler = {
+    canHandle(handlerInput) {
+        return (
+            Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+            Alexa.getIntentName(handlerInput.requestEnvelope) === 'SkipTheQuestionIntent'
+        );
+    },
+    handle(handlerInput) {
+        // get the current session attributes
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        // init speech output
+        var speakOutput = '';
+
+        // import the carBrandGame function and get a random brand.
+        const cfunctions = require('./carBrandGame.js');
+        const car = cfunctions.getRandomCar(sessionAttributes.pastCars);
+        // check to see if there are any brands left.
+        if (car.id === 0) {
+            speakOutput = `You have run out of cars. Thanks for playing!`; 
+        } else {
+            sessionAttributes.currentCar = car;
+            //save the session attributes and ask the question
+            handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+            speakOutput = `Let\'s move to the next one. Where is ${car.brand} from?`;
+        }
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+        }
+};
+
+
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'How can I help? Save CONTINUE to move on, or say STOP to quit.';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -220,7 +255,16 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        // get the current session attributes
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const score = sessionAttributes.score;
+
+        var speakOutput = '',
+        if(score>1){
+            speakOutput = `Your scored ${score} this time. Good try!See you next time!`;
+        } else {
+            speakOutput = `Goodbye and have a nice day!`;
+        }
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

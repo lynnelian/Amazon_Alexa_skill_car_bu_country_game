@@ -1,9 +1,5 @@
 /* *
  *car by country game js 1.0 
- *whats new:
- *1 no "yes" reponse before entering next question DONE
- *2 support repeat (repeat question) DONE
- *3 support three times guessing DONE
 **/
 const Alexa = require('ask-sdk-core');
 const AWS = require('aws-sdk');

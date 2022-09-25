@@ -411,6 +411,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         PlayGameHandler,
         GetCountryNameIntentHandler,
+        SkipTheQuestionIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

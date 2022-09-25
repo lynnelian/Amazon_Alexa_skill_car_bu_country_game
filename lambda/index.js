@@ -11,53 +11,16 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    async handle(handlerInput) {
-        //set up our Settings api foundations
-        const serviceClientFactory = handlerInput.serviceClientFactory;
-        const deviceId = handlerInput.requestEnvelope.context.System.device.deviceId;
-
-        // initialize some variables
-        var userTimeZone, greeting;
-
-        // wrap the API call in a try/catch block in case the call fails for
-        // whatever reason.
-        try {
-            const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-            userTimeZone = await upsServiceClient.getSystemTimeZone(deviceId);
-        } catch (error) {
-            userTimeZone = "error";
-            console.log('error', error.message);
-        }
-
-        // calculate our greeting
-        if(userTimeZone === "error"){
-            greeting = "Hello.";
-        } else {
-            // get the hour of the day or night in your customer's time zone
-            const cfunctions = await require('./carBrandGame.js');
-            var hour = cfunctions.getHour(userTimeZone);
-            if(0<=hour&&hour<=4){
-                greeting = "Hi night-owl!"
-            } else if (5<=hour&&hour<=11) {
-                greeting = "Good morning!"
-            } else if (12<=hour&&hour<=17) {
-                greeting = "Good afternoon!"
-            } else if (17<=hour&&hour<=23) {
-                greeting = "Good evening!"
-            } else {
-                greeting = "Howdy partner!"   
-            }
-        }
-
+     handle(handlerInput) {
         var speakOutput = '';
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         if(sessionAttributes.visits === 0){
-            speakOutput = `${greeting} Welcome to Car by Country Quiz. I'll tell you a car brand and
+            speakOutput = `Welcome to Car by Country Quiz. I'll tell you a car brand and
                 you try to guess the country of origin of the brand. See how many you can get!
                 Would you like to play?`;
         } else {
-            speakOutput = `${greeting} Excited to see you again! Welcome back to Car by Country! 
+            speakOutput = `Excited to see you again! Welcome back to Car by Country! 
             Ready to guess some more car brands?`
         }
 

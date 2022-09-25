@@ -81,7 +81,8 @@ const PlayGameHandler = {
     canHandle(handlerInput) {
         return (
             Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-            Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent'
+            (Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent'
+                || Alexa.getIntentName(handlerInput.requestEnvelope) === 'RepeatQuestionIntent')
         );
     },
     handle(handlerInput) {
@@ -113,11 +114,11 @@ const PlayGameHandler = {
             handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
             speakOutput = `Where is ${car.brand} from?`;
         }
-      return handlerInput.responseBuilder
-        .speak(speakOutput)
-        .reprompt(speakOutput)
-        .getResponse();
-    }
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+        }
 };
 
 const GetCountryNameIntentHandler = {
@@ -157,31 +158,31 @@ const GetCountryNameIntentHandler = {
 
         // get ready for next question
         const car = cfunctions.getRandomCar(sessionAttributes.pastCars);
-        var nextRoundCar = ''
+        var nextQuestion = ''
             // check to see if there are any brands left.
         if (car.id === 0) {
-            nextRoundCar = `You have run out of brands. Thanks for playing!`; 
+            nextQuestion = `You have run out of brands. Thanks for playing!`; 
         } else {
             //Ask the question
-            nextRoundCar = `Moving on!Where is ${car.brand} from?`;
+            nextQuestion = `Moving on!Where is ${car.brand} from?`;
         }
 
         //Did they get it?
         if (winner) {
             sessionAttributes.score += 1;
             speakOutput = `Yay! You got ${cbrand}'s country right! Your score is now
-            ${sessionAttributes.score}. ${nextRoundCar}`;
+            ${sessionAttributes.score}. ${nextQuestion}`;
             // Add the car to the list of past cars.
             sessionAttributes.pastCars.push(sessionAttributes.currentCar);
             //set the new "currentCar" attribute
             sessionAttributes.currentCar = car;
             sessionAttributes.num_of_guess = 0;
         } else if(sessionAttributes.num_of_guess < 3){
-            speakOutput = `Sorry. You didn't get the right month and year for
+            speakOutput = `Sorry. You didn't get the right country of origin for
             ${cbrand}. Have another try.`;
         } else {
             speakOutput = `Sorry. You didn't get the right country of origin for
-            ${cbrand}. Maybe you'll get the next one. ${nextRoundCar}`;
+            ${cbrand}. Maybe you'll get the next one. ${nextQuestion}`;
             // Add the car to the list of past cars.
             sessionAttributes.pastCars.push(sessionAttributes.currentCar);
             //set the new "currentCar" attribute

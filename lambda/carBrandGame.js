@@ -13,7 +13,7 @@ console.log(getRandomCar(pastCars));*/
 
 const checkAnswer = function(currentCar, userResponse) {
     const country = currentCar.country_of_ori;
-    let checking = country.find(c => c == userResponse.toLowerCase());
+    let checking = country.find(c => c === userResponse.toLowerCase());
     return checking ? true : false;
 };
 /**TEST

@@ -1,5 +1,6 @@
 /* *
  *car by country game js 1.0
+ *Front end displays not added. 
 **/
 const Alexa = require('ask-sdk-core');
 const AWS = require('aws-sdk');
